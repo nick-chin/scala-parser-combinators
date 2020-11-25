@@ -1,7 +1,7 @@
 import scala.util.parsing.combinator.RegexParsers
 
 object MatrixParser extends RegexParsers {
-  override protected val whiteSpace = """ \t""".r
+  override protected val whiteSpace = """[ \t]""".r
   val EOL: String = sys.props("line.separator")
   val num = """-?\d+""".r
 
