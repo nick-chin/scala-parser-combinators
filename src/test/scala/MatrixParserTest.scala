@@ -21,5 +21,13 @@ class MatrixParserTest extends FunSpec with Matchers{
 
       assert(m == parsedMatrix, "matrices not equal")
     }
+
+    it("should return an empty matrix on error") {
+      val matrixBad = matrix + EOL + "124a1, abv, 19x"
+
+      val parsedMatrix = MatrixParser.parse(matrixBad)
+
+      assert(List() == parsedMatrix, "matrices not equal")
+    }
   }
 }

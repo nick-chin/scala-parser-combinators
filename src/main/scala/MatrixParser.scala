@@ -5,9 +5,9 @@ object MatrixParser extends RegexParsers {
   val EOL: String = sys.props("line.separator")
   val num = """\d+""".r
 
-  def matrix: Parser[List[List[Int]]] = repsep(row, EOL) <~ opt(EOL)
-  def row: Parser[List[Int]] = rep1sep(cell, ",")
-  def cell: Parser[Int] = num ^^ { _.toInt}
+  def matrix: Parser[List[List[Int]]] = repsep(row, EOL)
+  def row: Parser[List[Int]] = repsep(cell, ",")
+  def cell: Parser[Int] = num ^^ {_.toInt}
 
   def parse(s: String): List[List[Int]] = parseAll(matrix, s) match {
     case Success(res, _) => res
